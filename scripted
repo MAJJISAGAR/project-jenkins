@@ -1,0 +1,21 @@
+node {
+    stage('Commit') {
+        echo "Source Code Download from the GITHUB to Scripted Pipeline......."
+    }
+    
+    stage('Build') {
+        echo "This is Build project run with maven tool ................"
+    }
+    
+    stage('Test') {
+        echo "This is Test project run with Selenium tool ................"
+    }
+    
+    stage('Deploy') {
+        echo "This is Deploy project run with Docker tool ................"
+    }
+    
+    stage('Monitor') {
+        echo "This is Monitoring project run with Splunk tool ................"
+    }
+}
