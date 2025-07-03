@@ -21,11 +21,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v2.0.2
-        with:
-          projectBaseDir: .
+      - name: SonarQube Scan (CLI)
+        run: |
+          sonar-scanner -X
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  
           
