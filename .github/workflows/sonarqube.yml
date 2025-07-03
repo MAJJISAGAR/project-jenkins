@@ -22,8 +22,8 @@ jobs:
           java-version: '17'
 
       - name: SonarQube Scan (CLI)
-        run: |
-          sonar-scanner -X
+          run: | 
+            ./gradlew sonarqube -Dsonar.verbose=true 
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
