@@ -8,24 +8,22 @@ on:
 
 jobs:
   sonar:
-    name: SonarQube Scan
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Java (required by Sonar Scanner)
-        uses: actions/setup-java@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          node-version: '18'
 
-      - name: SonarQube Scan (CLI)
-          run: | 
-            ./gradlew sonarqube -Dsonar.verbose=true 
+      - name: Install SonarScanner
+        run: npm install -g sonar-scanner
+
+      - name: SonarQube Scan with Debug
+        run: sonar-scanner -X
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-  
-          
